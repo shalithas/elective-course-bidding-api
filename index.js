@@ -4,6 +4,7 @@ const app = express();
 
 require('./startup/logging')();
 require('./startup/db')();
+require('./startup/validation')();
 require('./startup/routes')(app);
 
 

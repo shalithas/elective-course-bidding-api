@@ -20,6 +20,28 @@ const schema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  conflicts: [
+    new mongoose.Schema({
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course"
+      },
+      name: {
+        type: String,
+        required: true,
+        minlength: 3,
+        maxlength: 255,
+        trim: true
+      },
+      code: {
+        type: String,
+        required: true,
+        minlength: 2,
+        maxlength: 50,
+        trim: true
+      }
+    })
+  ],
   active: {
     type: Boolean,
     default: true
@@ -43,6 +65,7 @@ exports.validate = function validateGenre(course) {
     credit: Joi.number()
       .required()
       .positive(),
+    conflicts: Joi.array().items(Joi.objectId()),
     active: Joi.boolean()
   };
 

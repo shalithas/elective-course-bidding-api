@@ -3,6 +3,7 @@ const users = require("../routes/users");
 const auth = require("../routes/auth");
 const courses = require("../routes/courses");
 const classes = require("../routes/classes");
+const bids = require("../routes/bids");
 
 module.exports = function(app) {
   app.use(express.json());
@@ -11,4 +12,5 @@ module.exports = function(app) {
   app.use("/api/auth", auth);
   app.use("/api/courses", courses);
   app.use("/api/classes", classes);
+  app.use("/api/bids", bids);
 };
